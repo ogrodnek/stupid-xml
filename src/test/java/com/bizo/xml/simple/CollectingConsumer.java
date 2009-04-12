@@ -15,6 +15,22 @@
  */
 package com.bizo.xml.simple;
 
-public interface Consumer<T> {
-  void handle(T o);
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * For testing.
+ * 
+ * @author larry
+ */
+public final class CollectingConsumer implements Consumer<Company> {
+  private final List<Company> companies = new ArrayList<Company>();
+
+  public void handle(final Company c) {
+    companies.add(c);
+  }
+  
+  public List<Company> getCompanies() {
+    return this.companies;
+  }
 }

@@ -1,3 +1,18 @@
+/**
+ * Copyright 2009 Bizo, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.bizo.xml.simple;
 
 import java.io.InputStream;
@@ -7,6 +22,13 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 
+/**
+ * Simple XML parser.
+ * 
+ * @author larry
+ *
+ * @param <T>
+ */
 public final class SimpleXmlParser<T> {
   private final Consumer<T> c;
   private final Class<T> cl;
@@ -19,7 +41,7 @@ public final class SimpleXmlParser<T> {
   public void parse(final InputStream in) throws Exception {
     final XMLStreamReader r = XMLInputFactory.newInstance().createXMLStreamReader(in);
 
-    final Model<T> model = new Model(cl);
+    final Model<T> model = new Model<T>(cl);
     T bean = cl.newInstance();
 
     final LinkedList<String> seen = new LinkedList<String>();
